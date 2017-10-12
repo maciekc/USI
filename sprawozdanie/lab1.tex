@@ -1,3 +1,30 @@
 \chapter{Wstęp}
 
 \section{Cel zajęć}
+
+Celem projektu wykonywanego w ramach zajęć z przedmiotu \textit{Układy Sterowania Inteligentnego} było zaprojektowanie regulatora dla manipulatora, którego zadaniem było zabranie szklanki z wodą z jednego miejsca i odstawienie jej w innym miejscu. Przemieszczał się on w płaszczyźnie poziomej. Napędzany był jednym silnikiem prądu stałego.
+
+Projektowany regulator miał być układem sterowania inteligentnego. W ramach tego projektu należało również przeprowadzić porównanie inteligentnych algorytmów sterowania (np. sieć neuronowa lub regulator fuzzy) z regulatorami klasycznymi (np. PID, LQ lub czasooptymalny).
+
+\section{Obiekt sterowania}
+
+Obiektem sterowania był manipulator, który przenosił szklankę z wodą, a następnie powracał do położenia początkowego. Musiał on przenieść szklankę bez wylewania jej zawartości. Takie zadanie nie jest tożsame z samym pozycjonowaniem manipulatora. Wymaganie, by nie wylać wody narzuca ograniczenia na ruch obiektu. Musi poruszać się on z odpowiednio małym przyspieszeniem, gdy trzyma szklankę z wodą. Ograniczenie to nie jest jednak ważne, gdy powraca do położenia początkowego. Jest więc oczywiste, że dla ruchu w obie strony powinny zostać użyte inne regulatory. Pierwszy z regulatorów powinien zapewnić spełnienie następującego ograniczenia:
+\begin{equation}
+\ddot \phi(t) \leqslant \epsilon_{max}
+\end{equation}
+\noindent gdzie:\newline
+\(\phi\) jest położeniem kątowym manipulatora,\newline
+\(\epsilon_{max}\) jest maksymalnym przyspieszeniem kątowym.
+
+\paragraph*{}
+Oprócz tego konieczne było zdefiniowanie funkcji celu, dla którą minimalizować miał projektowany regulator. Zdecydowano, że będzie ona miała następującą postać:
+\begin{equation}
+J(\phi,r,t)=\int\limits_{0}^{\infty} (\phi(t)-r(t))^2dt+\int\limits_{0}^{\infty} u(t)^2dt
+\end{equation}
+\noindent gdzie:\newline
+\(\phi\) jest położeniem kątowym manipulatora,\newline
+\(r\) jest zadaną pozycją manipulatora,\newline
+\(u\) jest sterowaniem podawanym na obiekt.
+
+\paragraph*{}
+Należy zwrócić uwagę, że postanowiono zaniedbać opory ruchu. W związku z tym jedynym momentem siły działającym na manipulator był moment pochodzący od silnika prądu stałego. W dalszej części projektu możliwe jest zmodyfikowanie zadania w taki sposób, by wziąć pod uwagę opory związane z ruchem obrotowym manipulatora.
