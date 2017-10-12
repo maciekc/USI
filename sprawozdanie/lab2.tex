@@ -1,0 +1,43 @@
+\chapter{Model matematyczny}
+
+\section{Model silnika elektrycznego prądu stałego}
+Silnik elektryczny odpowiedzialny za poruszanie ramieniem został zamodelowany jako obiekt inercyjny pierwszego rzędu. Równania \ref{ele1} i \ref{ele2} opisują zależność generowanego momentu obrotowego od prądu.
+\begin{equation}\label{ele1}
+M(t) = k_e \cdot i(t)
+\end{equation}
+\begin{equation}\label{ele2}
+U(t) = i(t) \cdot R + L \cdot \frac{di(t)}{dt}
+\end{equation}
+gdzie:\\
+$M(t)$ - moment generowany przez silnik,\\
+$i(t)$ - prąd elektryczny,\\
+$k_e$ - stała elektryczna silnika,\\
+$L$ - indukcyjność silnika.\\
+%
+\section{Model matematyczny obiektu}
+Równania mechaniczne opisujące dynamikę całego układu mają postać:\\
+\begin{equation}\label{r1}
+\frac{d^2 \alpha(t)}{dt^2} \cdot J = k_e \cdot i(t) 
+\end{equation}
+\begin{equation}\label{r2}
+U(t) = i(t) \cdot R + \frac{d i(t)}{dt} \cdot L
+\end{equation}
+gdzie:\\
+$\alpha$ - kąt wychylenia,\\
+$J$ - moment bezwładności ramienia,\\
+$U(t)$ - napięcie podawane na silnik,\\
+
+W przyjętym modelu obiektu założono że wielkością sterującą jest napięcie podawane na silnik, a wyjściową kąt wychylenia ramienia.\\
+Na podstawie równań \ref{r1} i \ref{r2} zapisano model matematyczny w postać równań stanu przyjmując następujące zmienne stanu:\\
+$x_1$ - prąd silnika\\
+$x_2$ -  położenie kątowe ramienia\\
+$x_3$ - prędkość kątowa ramienia\\
+\begin{equation}\label{key}
+\dot {x_1} = -x_1  \cdot \frac{R}{L}
+\end{equation}
+\begin{equation}\label{key}
+\dot {x_2} = x_3
+\end{equation}
+\begin{equation}\label{key}
+\dot {x_3} = \frac{k_e}{J} \cdot J
+\end{equation}
