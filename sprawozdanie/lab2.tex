@@ -1,4 +1,5 @@
 \chapter{Model matematyczny}
+\label{cha:model_matematyczny}
 
 \section{Model silnika elektrycznego prądu stałego}
 Silnik elektryczny odpowiedzialny za poruszanie ramieniem został zamodelowany jako obiekt inercyjny pierwszego rzędu. Równania \ref{ele1} i \ref{ele2} opisują zależność generowanego momentu obrotowego od prądu.
@@ -8,12 +9,13 @@ M(t) = k_e \cdot i(t)
 \begin{equation}\label{ele2}
 U(t) = i(t) \cdot R + L \cdot \frac{di(t)}{dt}
 \end{equation}
-gdzie:\\
+\noindent gdzie:\\
 $M(t)$ - moment generowany przez silnik,\\
 $i(t)$ - prąd elektryczny,\\
 $k_e$ - stała elektryczna silnika,\\
-$L$ - indukcyjność silnika.\\
-%
+$L$ - indukcyjność silnika,\\
+\(R\) - opór elektryczny silnika.
+
 \section{Model matematyczny obiektu}
 Równania mechaniczne opisujące dynamikę całego układu mają postać:\\
 \begin{equation}\label{r1}
@@ -41,3 +43,35 @@ $x_3$ - prędkość kątowa ramienia\\
 \begin{equation}\label{key}
 \dot {x_3} = \frac{k_e}{J} \cdot x_1
 \end{equation}
+
+Schemat blokowy programu \textit{Simulink} realizujący opisany powyższy model został przedstawiony na rysunku 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=4in]{Figures/model.png}
+	\caption{Schemat blokowy programu \textit{Simulink}.}
+	\label{fig:model}
+\end{figure}
+
+Na rysunkach  przedstawiono odpowiedzi zmiennych stanu na skok napięcia.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=4in]{Figures/step_curr.eps}
+	\caption{Odpowiedź prądu na skok napięcia.}
+	\label{fig:step}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=4in]{Figures/step_ang.eps}
+	\caption{Odpowiedź kąta na skok napięcia.}
+	\label{fig:step}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=4in]{Figures/step_vel.eps}
+	\caption{Odpowiedź prędkości kątowej na skok napięcia.}
+	\label{fig:step}
+\end{figure}
