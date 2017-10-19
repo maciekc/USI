@@ -17,12 +17,19 @@ Obiektem sterowania był manipulator, który przenosił szklankę z wodą, a nas
 \(\phi\) jest położeniem kątowym manipulatora,\newline
 \(\epsilon_{max}\) jest maksymalnym przyspieszeniem kątowym.
 
-\paragraph*{}
-Oprócz tego konieczne było zdefiniowanie funkcji celu, dla którą minimalizować miał projektowany regulator. Zdecydowano, że będzie ona miała następującą postać:
+%\paragraph*{}
+\section{Wska\'zniki jakość}
+Aby móc porównać ze sobą różne struktury regulatorów  konieczne było zdefiniowanie wska\'zników jakości, które minimalizować miał projektowany regulator. Zdecydowano, że będą one następującej postaci:
+\begin{enumerate}
+	\item całka z kwadratu uchybu regulacji $J_1 = \int_{0}^{tk}e(t)^2 dt \  [rad^2 \cdot s]$
+	\item  wska\'znik energetyczny $J_2 = \int_{0}^{tk}u(t)^2 dt \ [V^2 \cdot s]$
+	\item  suma powyższych wska\'zników $J_3 = J_1 + J _2$
+\end{enumerate}
 \begin{equation}
-J(\phi,r,t)=\int\limits_{0}^{\infty} (\phi(t)-r(t))^2dt+\int\limits_{0}^{\infty} u(t)^2dt
+%J(\phi,r,t)=\int\limits_{0}^{\infty} (\phi(t)-r(t))^2dt+\int\limits_{0}^{\infty} u(t)^2dt
 \end{equation}
 \noindent gdzie:\newline
+$e(t) = r - \phi(t)$ to uchyb regulacji\\
 \(\phi\) jest położeniem kątowym manipulatora,\newline
 \(r\) jest zadaną pozycją manipulatora,\newline
 \(u\) jest sterowaniem podawanym na obiekt.

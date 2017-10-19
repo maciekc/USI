@@ -1,4 +1,5 @@
-MATLAB/*r2015a
+MATLAB/*.r2015a
 MATLAB/*.autosave
-sprawozdanie/*
+sprawozdanie/*.*
 !sprawozdanie/*.tex
+!sprawozdanie/*.pdf
