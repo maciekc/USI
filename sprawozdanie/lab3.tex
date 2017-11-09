@@ -122,6 +122,69 @@ $\beta2 = -5.33$\\
 	\label{neuron_ster_por}
 \end{figure}
 \FloatBarrier
+
+
+\section{Optymalizacja nastaw regulatora}
+Wykorzystując funkcję optymalizacyjną \textit{fmincon} środowiska MATLAB dobrano nastawy regulatora neuronowego opisanego w poprzedniej części tak aby minimalizować wska\'znik jakości $J_3$. 
+Poniżej zaprezentowano wartości poszczególnych parametrów regulatora oraz wartości wska\'zników jakości. \\
+\\
+$J1 = 2.089 \ [rad^2 \cdot s]$\\
+$J2 = 0.438 \ [v^2 \cdot s] $\\
+$J3 = 2.527$ \\
+\\
+$W = \begin{bmatrix}
+D_1& P_1& I_1&0\\
+D_2& P_2& I_2&0\\
+0&0&0&1
+\end{bmatrix} = 
+\begin{bmatrix}
+0.2402&2.6707& 1.282&0\\
+0.0661& 0.7348&0.3541&0\\
+0&0&0&1
+\end{bmatrix} 
+$
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 1]{fig/neural_opt.eps}
+	\caption		
+	{Opdowied\'x układu po optymalizacji $J = J_3$.}
+	\label{neuron_ster_opt}
+\end{figure}
+\\
+Z racji tej, że w układzie saturację zastąpiono funkcją sigmoidalną w wyniku działania regulatora otrzymano uchyb ustalony. Aby zniwelować ten efekt zmieniono postać wska\'znika jakości wykorzystywanego w funkcji optymalizującej na :
+\begin{equation}\label{key}
+J = J_3 + 10 \cdot |z - \alpha_k|
+\end{equation}
+gdzie:\\
+$z - $ wartość zadana,\\
+$\alpha_k$ - położenie ramienia w stanie ustalonym.\\\\
+Dla tak zmodyfikowanego wska\'znika jakości otrzymano następujące parametry układu regulacji:\\
+\\
+$J1 = 1.963 \ [rad^2 \cdot s]$\\
+$J2 = 0.7543 \ [v^2 \cdot s] $\\
+$J3 = 2.718$ \\
+\\
+$W = \begin{bmatrix}
+	D_1& P_1& I_1&0\\
+	D_2& P_2& I_2&0\\
+	0&0&0&1
+	\end{bmatrix} = 
+	 \begin{bmatrix}
+	 	0.2410&2.9867& 1.5563&0\\
+	0.0635& 3.0089&0.9648&0\\
+	0&0&0&1
+	\end{bmatrix} 
+$
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 1]{fig/neural_opt_uchyb.eps}
+	\caption		
+	{Opdowied\'x układu po optymalizacji $J = J_3 + |z - \alpha_k|$.}
+	\label{neuron_ster_opt_uchyb}
+\end{figure}
+
+\FloatBarrier
 \section{Porównanie wska\'zników jakości}
 \begin{table}[h]
 	\caption{Porównanie wska\'zników jakości regulator PID - neuronowy + saturacja - neuronowy + f. sigmoidalna.}
@@ -138,5 +201,12 @@ $\beta2 = -5.33$\\
 		\hline
 		Neuronowy + f. sigmoidalna & 3.741 &  0.857 &  4.597\\
 		\hline
+		OPTYMALIZACJA\\
+		\hline
+		Neuronowy1 & 2.08 & 0.438 &  2.527\\
+		\hline
+		Neuronowy2 & 1.963 &  0.7543 &  2.718\\
+		\hline
 	\end{tabular}
+
 \end{table}
