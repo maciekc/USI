@@ -185,6 +185,7 @@ $
 \end{figure}
 
 \FloatBarrier
+\newpage
 \section{Porównanie wska\'zników jakości}
 \begin{table}[h]
 	\caption{Porównanie wska\'zników jakości regulator PID - neuronowy + saturacja - neuronowy + f. sigmoidalna.}
@@ -208,5 +209,58 @@ $
 		Neuronowy2 & 1.963 &  0.7543 &  2.718\\
 		\hline
 	\end{tabular}
-
 \end{table}
+\FloatBarrier
+
+\section{Projektowanie regulatora neuronowego z użyciem Neural Toolbox.}
+	
+Zadanie polegało na zbadaniu jaka struktura regulatora neuronowego najlepiej odwzoruje pracę układu z regulatorem PID. Na podstawie sygnału sterującego wygenerowanego przez zaprojektowany we wcześniejszej części regulator PID badano która z rozpatrywanych struktur regulatora jest najlepsza pod względem minimalizacji całki z różnicy pomiędzy sterowaniem referencyjnym i sygnałem pochodzącym z otrzymanego regulatora. Do przeprowadzenia tej części ćwiczenia wykorzystano przybornik Neural Network ze środowiska MATLAB. \\
+
+Rozpatrywano różne postaci sygnałów wejściowych 
+\begin{enumerate}
+	\item trzy ostatnie wartości uchybu regulacji,
+	\item trzy ostatnie wartości uchybu regulacji plus ostatnia wartość referencyjnego sygnału sterującego
+\end{enumerate} 	
+Dodatkowo sprawdzono jak liczba neuronów wpływa na wyniki eksperymentu. Rozpatrywano odpowiednio 10 i 20 neuronów w strukturze regulatora.\\
+\\
+Otrzymane wyniki przedstawione są w tabeli \ref{optNeural}
+
+	\begin{table}[h]
+		\caption{Porównanie różnych struktur regulatora neuronowego w stosunku do regulatora PID.}
+		\label{optNeural}
+		\centering
+		
+		\begin{tabular}{|c|M{2.5cm}|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
+			\hline
+			wska\'znik jakości&10 neuronów&20 neuronów&10 neuronów + sterowanie&20 neuronów + sterowanie\\
+			\hline
+			e $[V^2 \cdot s]$&11.7862 &   1.5767 &   0.1073& $1.391 \cdot 10^{-5}$ \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale = 0.8]{fig/10neuron.eps}
+		\caption		
+		{Porównanie sterowanie referencyjnego z wyjściem regulatora neuronowego l. neuronów = 10.}
+		\label{10n}
+	\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/20neuronU.eps}
+	\caption		
+	{Porównanie sterowanie referencyjnego z wyjściem regulatora neuronowego l. neuronów = 20, + sterowanie.}
+	\label{20nU}
+\end{figure}
+	
+	
+	
+	
+	
+	
+	
+	
+	
