@@ -261,6 +261,27 @@ Otrzymane wyniki przedstawione są w tabeli \ref{optNeural}
 
 \subsection{Regulator rozmyty}
 
+Ze względu na różna dynamie układu w zależności czy ramię przemieszcza się z pełną i pusta szklanka wprowadzono różne reguły dla sterowania. Odpowiednio $P, P_p$ - reguła "dodatnia" dla pełnej i pustej szklanki.
+
+\begin{table}[h]
+	\caption{Tabla reguł regulatora fuzzy. $N$ - wart. ujemna, $Z$ - wart. zerowa, $P$ - wart. dodatnia, $P_p$ - wart dodatnia dla pustej szklanki}
+	\label{fuzzy_table} 
+	\centering
+	
+	\begin{tabular}{|c|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
+		\hline
+		$e / \dfrac{de(t)}{dt}$ &$N$&$Z$&$P$\\
+		\hline
+		$N$ &$Z$& $N$ & $N$\\
+		\hline
+		$Z$ &$N$& $Z$ & $P$\\
+		\hline
+		$P$ &$P_p$&  $P_p$ & $Z$\\
+		\hline
+		
+	\end{tabular}
+\end{table}
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale = 0.8]{fig/fuzzy_odp.eps}
