@@ -194,7 +194,7 @@ $
 	
 	\begin{tabular}{|c|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
 		\hline
-		Regulator [g]&$J_1$&$J_2$&$J_3$\\
+		Regulator &$J_1$&$J_2$&$J_3$\\
 		\hline
 		PID &3.739&   0.841 &  4.580\\
 		\hline
@@ -255,10 +255,61 @@ Otrzymane wyniki przedstawione są w tabeli \ref{optNeural}
 	{Porównanie sterowanie referencyjnego z wyjściem regulatora neuronowego l. neuronów = 20, + sterowanie.}
 	\label{20nU}
 \end{figure}
+
+\FloatBarrier
+\newpage
+
+\subsection{Regulator rozmyty}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/fuzzy_odp.eps}
+	\caption		
+	{Odpowied\'z obiektu dla regulatora rozmytego.}
+	\label{fuzzyOdp}
+\end{figure}
 	
+\begin{table}[h]
+	\caption{Wska\'zniki jakości regulator PD - fuzzy.}
+	\label{fuzzy_wsk}
+	\centering
 	
-	
-	
+	\begin{tabular}{|c|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
+		\hline
+		Regulator &$J_1$&$J_2$&$J_3$\\
+		\hline
+		Fuzzy &3.624&  1.96 &  5.583\\
+		\hline
+		
+	\end{tabular}
+\end{table}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/e_rules.eps}
+	\caption		
+	{Reguły dla uchybu regulacji.}
+	\label{e_rules}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/de_rules.eps}
+	\caption		
+	{Reguły dla pochodnej uchybu regulacji.}
+	\label{de_rules}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/u_rules.eps}
+	\caption		
+	{Reguły dla sterowania.}
+	\label{u_rules}
+\end{figure}
 	
 	
 	

@@ -46,7 +46,7 @@ A(8,8) = 1;
 B = zeros(8,1);
 
 alpha_0 = -1;
-sim('Model_opt_Matlab', 10);
+sim('Model_opt_Matlab_2015a', 10);
 
 time = ScopeData1.time;
 zadana = ScopeData1.signals(1).values(:,5);
@@ -55,30 +55,54 @@ e = zadana - alpha;
 
 sterowanie = ScopeData1.signals(2).values(:,1)';
 
-%%
-index = 2;
+alpha_0 = 1;
+sim('Model_opt_Matlab_2015a', 10);
+time = ScopeData1.time;
+zadanaS = ScopeData1.signals(1).values(:,5);
+alphaS = ScopeData1.signals(1).values(:,2);
+eS = zadanaS - alphaS;
 
-input = [e(3:end), e(2:end-1), e(1:end-2)]';
+sterowanieS = ScopeData1.signals(2).values(:,1)';
+
+%%
+index = 1;
+perfs = zeros(1,10);
+nets = cell(1,10);
+
+
+% input = [e(3:end), e(2:end-1), e(1:end-2)]';
 % input = [e(3:end), e(2:end-1), e(1:end-2) sterowanie(2:end-1)']';
+input = [e(3:end), e(2:end-1), e(1:end-2), zadana(3:end), sterowanie(2:end-1)']';
 % sterowanie=sterowanie(3:end);
 sterowanie=sterowanie(3:end);
 
-net = feedforwardnet(20);
-net = configure(net, input, sterowanie);
-[net, tr] = train(net, input, sterowanie);
-y = net(input);
+% inputS = [eS(3:end), eS(2:end-1), eS(1:end-2)]';
+% inputS = [eS(3:end), eS(2:end-1), eS(1:end-2), sterowanieS(2:end-1)']';
+inputS = [eS(3:end), eS(2:end-1), eS(1:end-2),zadanaS(3:end), sterowanieS(2:end-1)']';
+sterowanieS=sterowanieS(3:end);
 
-Odp(index,:) = y;
-uchyb = sterowanie - y;
-Je(index) = sum(uchyb.^2);
+for i =1:10
+
+    net = feedforwardnet(2);
+    net = configure(net, input, sterowanie);
+    [net, tr] = train(net, input, sterowanie);
+    nets{i}=net;
+    perfs(i)= tr.best_tperf;
+end
+
+%%
+[best_perf, ind] = min(perfs);
+best_net = nets{ind};
+y_train = best_net(input);
+y_inv = best_net(inputS);
 
 %%
 close all
-y = Odp(4,:);
-uchyb = sterowanie - y;
+
+uchyb = sterowanie - y_train;
 figure(1)
 subplot(211)
-plot(time(1:end-2), sterowanie', time(1:end-2), y)
+plot(time(1:end-2), sterowanie', time(1:end-2), y_train)
 legend('referencyjny','wyjscie sieci')
 xlabel('czas [s]')
 grid on;
@@ -89,7 +113,17 @@ xlabel('czas [s]')
 ylabel('\Delta U[v]')
 grid on;
 
-
-
-
-
+%%
+uchyb = sterowanieS - y_inv;
+figure(2)
+subplot(211)
+plot(time(1:end-2), sterowanieS', time(1:end-2), y_inv)
+legend('referencyjny','wyjscie sieci')
+xlabel('czas [s]')
+grid on;
+hold on;
+subplot(212)
+plot(time(1:end-2), uchyb)
+xlabel('czas [s]')
+ylabel('\Delta U[v]')
+grid on;
