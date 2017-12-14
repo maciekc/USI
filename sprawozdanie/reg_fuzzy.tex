@@ -1,0 +1,138 @@
+\chapter{Regulator rozmyty}
+
+W tej sekcji przedstawione zostaną wyniki symulacji działania przyjętego układu z regulatorem rozmytym Mamdaniego. Cały proces projektowania struktury regulatora został przeprowadzony w toolbox-ie \textit{Fuzzy} środowiska MATLAB. Głównym celem przeprowadzonych badań było zapoznanie się z zasadą działania regulatora rozmytego i  jak najlepsze odwzorowanie działania oryginalnego regulatora PD. \\
+Zdecydowano, że sygnałami wejściowymi, na których bazował regulator będą uchyb i pochodna uchybu regulacji. Na bazie przebiegów wcześniej wspomnianych sygnałów została zaprojektowana baza reguł. Ze względu na różną dynamikę układu, zależną od wypełnienia szklanki, wprowadzono różne reguły dla sterowania. Wszystkie reguły w zależności od wartość uchybu regulacji i jego pochodnej podane są w tabeli \ref{fuzzy_table}. Symbole $P$ i $ P_p$ oznaczają odpowiednio regułę "dodatnią" dla pełnej i pustej szklanki.\\
+W ramach przeprowadzonych badań symulacyjnych porównano działania regulatora na bazie wcześniej przyjętych wska\'zników jakości dla różnych postaci funkcji przynależności.
+
+\begin{table}[h]
+	\caption{Tabla reguł regulatora fuzzy. $N$ - wart. ujemna, $Z$ - wart. zerowa, $P$ - wart. dodatnia, $P_p$ - wart dodatnia dla pustej szklanki}
+	\label{fuzzy_table} 
+	\centering
+	
+	\begin{tabular}{|c|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
+		\hline
+		$e / \dfrac{de(t)}{dt}$ &$N$&$Z$&$P$\\
+		\hline
+		$N$ &$Z$& $N$ & $N$\\
+		\hline
+		$Z$ &$N$& $Z$ & $P$\\
+		\hline
+		$P$ &$P_p$&  $P_p$ & $Z$\\
+		\hline
+		
+	\end{tabular}
+\end{table}
+
+\section{Pierwszy zestaw funkcji przynależności}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/fuzzy_odp.eps}
+	\caption		
+	{Odpowied\'z obiektu dla regulatora rozmytego.}
+	\label{fuzzyOdp}
+\end{figure}
+	
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.6]{fig/e_rules.eps}
+	\caption		
+	{Reguły dla uchybu regulacji - I zestaw funkcji przynależności.}
+	\label{e_rules1}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.6]{fig/de_rules.eps}
+	\caption		
+	{Reguły dla pochodnej uchybu regulacji - I zestaw funkcji przynależności.}
+	\label{de_rules1}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.6]{fig/u_rules.eps}
+	\caption		
+	{Reguły dla sterowania -  I zestaw funkcji przynależności.}
+	\label{u_rules1}
+\end{figure}
+
+\FloatBarrier
+\section{Drugi zestaw funkcji przynależności}
+
+Na rysunku \ref{set2_surface} zaprezentowano płaszczyznę wyznaczoną przez przyjęte reguły.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/fuzzySurface.PNG}
+	\caption		
+	{Płaszczyzna sterowań wyznaczona przez reguły zestawu nr II.}
+	\label{set2_surface}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/fuzzy_odp2.eps}
+	\caption		
+	{Odpowied\'z obiektu dla regulatora rozmytego, II zestaw funkcji przynależności.}
+	\label{fuzzyOdp2}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.6]{fig/e_rules2.eps}
+	\caption		
+	{Reguły dla uchybu regulacji -  II zestaw funkcji przynależności.}
+	\label{e_rules2}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.6]{fig/de_rules2.eps}
+	\caption		
+	{Reguły dla pochodnej uchybu regulacji -  II zestaw funkcji przynależności.}
+	\label{de_rules2}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.6]{fig/u_rules.eps}
+	\caption		
+	{Reguły dla sterowania -  II zestaw funkcji przynależności.}
+	\label{u_rules2}
+\end{figure}
+\FloatBarrier
+
+\section{Porównanie}
+
+Na rysunku \ref{fuzzy_por} przedstawiono porównanie przebiegów odpowiedzi obiektu dla każdego z rozpatrywanych zestawów reguł. W tabeli \ref{fuzzy_wsk} zapisano wartości wska\'zników jakości dla obu rozpatrywanych przypadków.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/por_fuzzy_sets.eps}
+	\caption		
+	{Porównanie działania regulatora dla oby zestawów reguł.}
+	\label{fuzzy_por}
+\end{figure}
+
+\begin{table}[h]
+	\caption{Wska\'zniki jakości dla regulatora PD - fuzzy.}
+	\label{fuzzy_wsk}
+	\centering
+	
+	\begin{tabular}{|c|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
+		\hline
+		Funkcje przynależności &$J_1$&$J_2$&$J_3$\\
+		\hline
+		I zestaw &3.624&  1.96 &  5.583\\
+		\hline
+		II zestaw &4.201&  1.667 &  5.868\\
+		\hline
+				
+	\end{tabular}
+
+
+\end{table}
