@@ -133,6 +133,84 @@ Na rysunku \ref{fuzzy_por} przedstawiono porównanie przebiegów odpowiedzi obie
 		\hline
 				
 	\end{tabular}
+\end{table}
 
+\section{Regulator Tagaki - Sageno}
 
+\subsection{Manualny dobór struktury regulatora}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/sagenoManSurface.eps}
+	\caption		
+	{Powierzchnia sterowania dla regulatora rozmytego typu Tagaki-Sageno.}
+	\label{fuzzy_sageno_sufraceMan}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/fuzzy_sagenoMan_odp.eps}
+	\caption		
+	{Odpowied\'z obiektu dla regulatora rozmytego typu Tagaki-Sageno.}
+	\label{fuzzy_sageno_man}
+\end{figure}
+\FloatBarrier
+
+\subsection{Optymalizacja struktury regulatora}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/sagenoOptSurface.eps}
+	\caption		
+	{Powierzchnia sterowania dla regulatora rozmytego typu Tagaki-Sageno po optymalizacji.}
+	\label{fuzzy_sageno_sufrace}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/fuzzy_sagenoOpt_odp.eps}
+	\caption		
+	{Odpowied\'z obiektu dla regulatora rozmytego typu Tagaki-Sageno po optymalizacji.}
+	\label{fuzzy_sageno_odp}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/e_rules_sageno.eps}
+	\caption		
+	{Reguły dla uchybu regulacji regulatora T-S po optymalizacji.}
+	\label{fuzzy_sageno_e_rulles}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/de_rules_sageno.eps}
+	\caption		
+	{Reguły dla pochodnej uchybu regulacji regulatora T-S po optymalizacji.}
+	\label{fuzzy_sageno_de_rulles}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Porównanie}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.8]{fig/por_fuzzy_sageno.eps}
+	\caption		
+	{Porównanie działania regulatora przed i po optymalizacji.}
+	\label{fuzzy_sageno_por}
+\end{figure}
+
+\begin{table}[h]
+	\caption{Porównanie wska\'zników jakości dla regulatora rozmytego typu Tagaki-Sageno.}
+	\label{fuzzy_sageno_wsk}
+	\centering
+	
+	\begin{tabular}{|c|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
+		\hline
+		Sposób projektowania &$J_1$&$J_2$&$J_3$\\
+		\hline
+		manualny &3.497&  2.639 &  6.136\\
+		\hline
+		optymalizacja &3.642&  0.8707 &  4.513\\
+		\hline		
+	\end{tabular}
 \end{table}

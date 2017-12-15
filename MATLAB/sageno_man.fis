@@ -1,0 +1,47 @@
+[System]
+Name='sageno_man'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='de/dt'
+Range=[-20 20]
+NumMFs=3
+MF1='neg':'gauss2mf',[1.699 -20.5 0.6455 -1.81]
+MF2='zero':'gaussmf',[0.4247 0]
+MF3='pos':'gauss2mf',[0.6455 1.81 1.699 20.5]
+
+[Input2]
+Name='e'
+Range=[-2 2]
+NumMFs=3
+MF1='neg':'zmf',[-2 -0.2]
+MF2='zero':'gaussmf',[0.7432 -4.163e-17]
+MF3='pos':'smf',[0.2 2]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=3
+MF1='zero':'constant',[0]
+MF2='pos':'constant',[1]
+MF3='neg':'constant',[-1]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 3 (1) : 1
+1 3, 2 (1) : 1
+2 1, 3 (1) : 1
+2 2, 1 (1) : 1
+2 3, 2 (1) : 1
+3 1, 3 (1) : 1
+3 2, 2 (1) : 1
+3 3, 1 (1) : 1
