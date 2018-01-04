@@ -1,5 +1,10 @@
 MATLAB/*.r2015a
+
 MATLAB/*.autosave
+
 sprawozdanie/*.*
+
 !sprawozdanie/*.tex
+
 !sprawozdanie/*.pdf
+prezentacja/*

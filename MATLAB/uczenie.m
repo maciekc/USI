@@ -72,24 +72,25 @@ nets = cell(1,10);
 
 % input = [e(3:end), e(2:end-1), e(1:end-2)]';
 % input = [e(3:end), e(2:end-1), e(1:end-2) sterowanie(2:end-1)']';
-input = [e(3:end), e(2:end-1), e(1:end-2), zadana(3:end), sterowanie(2:end-1)']';
+input = [[e(3:end)' eS(3:end)']; [e(2:end-1)' eS(2:end-1)']; [e(1:end-2)' eS(1:end-2)']; [zadana(3:end)' zadanaS(3:end)']; [sterowanie(2:end-1) sterowanieS(2:end-1)]];
 % sterowanie=sterowanie(3:end);
-sterowanie=sterowanie(3:end);
+sterowanie=[sterowanie(3:end) sterowanieS(3:end)];
 
 % inputS = [eS(3:end), eS(2:end-1), eS(1:end-2)]';
 % inputS = [eS(3:end), eS(2:end-1), eS(1:end-2), sterowanieS(2:end-1)']';
 inputS = [eS(3:end), eS(2:end-1), eS(1:end-2),zadanaS(3:end), sterowanieS(2:end-1)']';
 sterowanieS=sterowanieS(3:end);
-
+%%
 for i =1:10
 
-    net = feedforwardnet(2);
+    net = feedforwardnet(10);
     net = configure(net, input, sterowanie);
     [net, tr] = train(net, input, sterowanie);
     nets{i}=net;
     perfs(i)= tr.best_tperf;
 end
-
+% gensim(best_net,0.01)
+alpha_0 = -1;
 %%
 [best_perf, ind] = min(perfs);
 best_net = nets{ind};
