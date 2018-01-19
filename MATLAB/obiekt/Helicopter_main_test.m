@@ -348,7 +348,7 @@ K_lqr = lqr(lin_A, lin_B, Q, R, N);
 
 %% Regulator LQI dla osi poziomej
 lin_sys = ss(lin_A, lin_B, lin_C, lin_D);
-Q = [1 0 0 0;0 0 0 0;0 0 0 0;0 0 0 1];
+Q = [10 0 0 0;0 0 0 0;0 0 0 0;0 0 0 1];
 R = 1;
 N = zeros(4,1);
 K_lqi = lqi(lin_sys, Q, R, N);

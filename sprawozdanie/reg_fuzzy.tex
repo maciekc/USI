@@ -22,13 +22,13 @@ W ramach przeprowadzonych badań symulacyjnych porównano działania regulatora 
 		
 	\end{tabular}
 \end{table}
-
+\FloatBarrier
+\newpage
 \section{Pierwszy zestaw funkcji przynależności}
-
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale = 0.8]{fig/fuzzy_odp.eps}
+	\includegraphics[scale = 0.75]{fig/fuzzy_odp.eps}
 	\caption		
 	{Odpowied\'z obiektu dla regulatora rozmytego.}
 	\label{fuzzyOdp}
@@ -38,14 +38,14 @@ W ramach przeprowadzonych badań symulacyjnych porównano działania regulatora 
 	\noindent\makebox[\textwidth]{
 		\centering
 		\subfloat[][Reguły dla uchybu regulacji.]{
-			\includegraphics[scale=0.65]{fig/e_rules.eps}
+			\includegraphics[scale=0.60]{fig/e_rules.eps}
 			\label{e_rules1}
 		}
 		\hfill
 		%\begin{figure}[h!]
 		%	\centering
 		\subfloat[][Reguły dla pochodnej uchybu.]{
-			\includegraphics[scale=0.65]{fig/de_rules.eps}
+			\includegraphics[scale=0.60]{fig/de_rules.eps}
 			\label{de_rules1}
 		}
 		
@@ -138,6 +138,9 @@ Na rysunku \ref{fuzzy_por} przedstawiono porównanie przebiegów odpowiedzi obie
 				
 	\end{tabular}
 \end{table}
+\FloatBarrier
+Z przebiegów zamieszczonych na rysunku \ref{fuzzy_por} i danych z tabeli \ref{fuzzy_wsk} wynika, że w przypadku drugiego zestawu funkcji przynależności odpowied\'z obiektu ma gorszą dynamikę i mniejsze przeregulowanie niż w przypadku zestawu nr 1. W przypadku wykorzystania funkcji gaussowskich otrzymano dużo lepszy wska\'znik jakości $J_2$, który jest odpowiednikiem energii dostarczonej do układu.
+
 \newpage
 \section{Regulator Takagi - Sageno}
 Główną różnicą pomiędzy regulatorem rozmytym typu Takagi-Sageno (1985 r.), a strukturą regulatora zaproponowaną przez Mamdaniego jest liniowa funkcja wyjścia.  
@@ -223,8 +226,11 @@ Rysunek \ref{fuzzy_sageno_odp} przedstawia przebiegi wszystkich zmiennych stanu 
 	{Odpowied\'z obiektu dla regulatora rozmytego typu Takagi-Sageno po optymalizacji.}
 	\label{fuzzy_sageno_odp}
 \end{figure}
-
+\FloatBarrier
+\newpage
 \subsection{Porównanie}
+
+Porównując wartości w tabeli \ref{fuzzy_sageno_wsk} i przebiegi na rysunku \ref{fuzzy_sageno_por} można stwierdzić, że odpowied\'z obiektu dla regulatora otrzymanego w wyniku przeprowadzenia procedury optymalizującej ma gorszą dynamikę niż w przypadku ręcznego strojenie. W zamian za to otrzymaliśmy znacząco lepszą wartość wska\'znika $J_2$ oraz mniejsze przeregulowanie.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale = 0.8]{fig/por_fuzzy_sageno.eps}

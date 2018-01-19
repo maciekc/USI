@@ -36,5 +36,7 @@ grid on
 
 xlabel('czas [s]')
 ylabel('b³¹d [rad]')
-
-
+%%
+%wskazniki jakosci
+JLQ = sum(model_odp.lq_por.signals.values.^2*0.001)
+JFUZZ = sum(fuzz_odp.lq_por.signals.values.^2*0.001)
