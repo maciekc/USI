@@ -9,7 +9,7 @@ Projektowany regulator miał być układem sterowania inteligentnego. W ramach t
 
 \section{Obiekt sterowania}
 
-Obiektem sterowania był manipulator, który przenosił szklankę z wodą, a następnie powracał do położenia początkowego. Musiał on przenieść szklankę bez wylewania jej zawartości. Takie zadanie nie jest tożsame z samym pozycjonowaniem manipulatora. Wymaganie, by nie wylać wody narzuca ograniczenia na ruch obiektu. Musi poruszać się on z odpowiednio małym przyspieszeniem, gdy trzyma szklankę z wodą. Ograniczenie to nie jest jednak ważne, gdy powraca do położenia początkowego. Jest więc oczywiste, że dla ruchu w obie strony powinny zostać użyte inne regulatory. Pierwszy z regulatorów powinien zapewnić spełnienie następującego ograniczenia:
+Obiektem sterowania był manipulator, który przenosił szklankę z wodą, a następnie powracał do położenia początkowego. Musiał on przenieść szklankę bez wylewania jej zawartości. Takie zadanie nie jest tożsame z samym pozycjonowaniem manipulatora. Wymaganie, by nie wylać wody, narzuca ograniczenia na ruch obiektu. Musi poruszać się on z odpowiednio małym przyspieszeniem, gdy trzyma szklankę z wodą. Ograniczenie to nie jest jednak ważne, gdy powraca do położenia początkowego. Jest więc oczywiste, że dla ruchu w obie strony powinny zostać użyte inne regulatory. Pierwszy z regulatorów powinien zapewnić spełnienie następującego ograniczenia:
 \begin{equation}
 \ddot \phi(t) \leqslant \epsilon_{max}
 \end{equation}
@@ -19,7 +19,7 @@ Obiektem sterowania był manipulator, który przenosił szklankę z wodą, a nas
 
 %\paragraph*{}
 \section{Wska\'zniki jakość}
-Aby móc porównać ze sobą różne struktury regulatorów  konieczne było zdefiniowanie wska\'zników jakości, które minimalizować miał projektowany regulator. Zdecydowano, że będą one następującej postaci:
+Aby móc porównać ze sobą różne struktury regulatorów  konieczne było zdefiniowanie wska\'zników jakości, które miały minimalizować działanie regulatora według przyjętych kryteriów. Zdecydowano, że będą one następującej postaci:
 \begin{enumerate}
 	\item całka z kwadratu uchybu regulacji $J_1 = \int_{0}^{tk}e(t)^2 dt \  [rad^2 \cdot s]$
 	\item  wska\'znik energetyczny $J_2 = \int_{0}^{tk}u(t)^2 dt \ [V^2 \cdot s]$

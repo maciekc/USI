@@ -1,5 +1,5 @@
 \chapter{Regulator neuronowy}
-Regulator neuronowy został zaprojektowany w ten sposób aby otrzymać analogiczne przebiegi sygnałów jak w przypadku klasycznego regulatora PID, wykorzystując do tego celu jeden neuron. Przyjęto, że wektor sygnałów wejściowych będzie miał następującą postać: 
+Regulator neuronowy został zaprojektowany w taki sposób aby otrzymać analogiczne przebiegi sygnałów jak w przypadku klasycznego regulatora PID, wykorzystując do tego celu jeden neuron. Przyjęto, że wektor sygnałów wejściowych będzie miał następującą postać: 
 \begin{equation}\label{key}
 x = \begin{bmatrix}
 \dot {e}\\
@@ -10,9 +10,9 @@ e\\
 \end{equation}
 gdzie:\\
 $e$ - uchyb regulacji\\
-$z$ - wart. zadana\\
-$z_{min}, \ z_{max}$ - odpowiednio minimalna i maksymalna wart. zadana\\
-Współczynnik skalujący z racji na to, że w rozważanym przypfdku wymagane są dwa regulatory jest w postaci macierzy: 
+$z$ - wartość zadana\\
+$z_{min}, \ z_{max}$ - odpowiednio minimalna i maksymalna wartość zadana\\
+Z uwagi na fakt, że w rozważanym przypadku wymagane są dwa różne regulatory, współczynnik skalujący zapisano w postaci macierzy: 
 \begin{equation}\label{key}
 W = \begin{bmatrix}
 D_1& P_1& I_1&0\\
@@ -26,15 +26,16 @@ b = \begin{bmatrix}
 0\\0\\0
 \end{bmatrix}
 \end{equation}
-Z racji na to że w zależności od tego czy przestawiamy pustą szklankę czy pełną należy zmieniać nastawy regulatora oraz saturację sygnału sterującego. Po uwzględnieniu tych wymagań przyjęto następującą postać funkcji:
+Uwzględniając fakt, iż przy przemieszczaniu pustej lub pełnej szklanki należy zmieniać nastawy regulatorów, przyjęto następującą postać funkcji aktywacji:
 \begin{equation}\label{key}
 f(u,z) = f_{sat1} ((1-z) \cdot u_1 + z \cdot u_2) \cdot (1-z) + f_{sat2} ((1-z) \cdot u_1 + z \cdot u_2) \cdot z
 \end{equation}
 gdzie: \\
 $z - $przeskalowania wartość zadana do przedziału [0,1]\\
-$u_1, \ u_2 - $wartości sterowania odpowiednio od regulatorów dla pełnej i pustej szklanki.\\
+$u_1, \ u_2 - $wartości sterowania odpowiednio od regulatorów dla pełnej i pustej szklanki,\\
 $f_{sat1}, \ f_{sat2}$ - funkcje saturacji dla pełnej i pustej szklanki.
  \\
+\newpage
  Przeanalizowano dwie postaci funkcji saturacji: 
  \begin{enumerate}
  	\item klasyczna funkcja opisana równaniem :
@@ -53,7 +54,7 @@ $f_{sat1}, \ f_{sat2}$ - funkcje saturacji dla pełnej i pustej szklanki.
  \end{enumerate}
 gdzie:\\
 $K$ - maksymalna dozwolona wartość sterowania podawanego na obiekt.\\
-Parametry funkcji sigmoidlanych $\beta$ zostały dobrane za pomocą funkcji \textit{fmincon} tak aby zminimalizować różnice w stosunku do zależności opisanych równaniami \ref{sat_klas}.Finalnie otrzymano następujące wartości parametrów:\\
+Parametry funkcji sigmoidlanych $\beta$ zostały dobrane za pomocą funkcji \textit{fmincon} tak, aby zminimalizować różnice w stosunku do zależności opisanych równaniami \ref{sat_klas}. Finalnie otrzymano następujące wartości parametrów:\\
 $\beta1 = -2.65$\\
 $\beta2 = -5.33$\\
 
@@ -84,7 +85,7 @@ $\beta2 = -5.33$\\
 
 
 \section{Optymalizacja nastaw regulatora}
-Wykorzystując funkcję optymalizacyjną \textit{fmincon} środowiska MATLAB dobrano nastawy regulatora neuronowego opisanego w poprzedniej części tak aby minimalizować wska\'znik jakości $J_3$. 
+Wykorzystując funkcję optymalizacyjną środowiska MATLAB, \textit{fmincon},  dobrano nastawy regulatora neuronowego opisanego w poprzedniej części w taki sposób, aby minimalizować wska\'znik jakości $J_3$. 
 Poniżej zaprezentowano wartości poszczególnych parametrów regulatora oraz wartości wska\'zników jakości. \\
 \\
 $J1 = 2.089 \ [rad^2 \cdot s]$\\
@@ -110,7 +111,7 @@ $
 	\label{neuron_ster_opt}
 \end{figure}
 \\
-Z racji tej, że w układzie saturację zastąpiono funkcją sigmoidalną w wyniku działania regulatora otrzymano uchyb ustalony. Aby zniwelować ten efekt zmieniono postać wska\'znika jakości wykorzystywanego w funkcji optymalizującej na :
+Uwzględniając fakt, że w omawianym układzie saturację zastąpiono funkcją sigmoidalną, w wyniku działania regulatora otrzymano uchyb ustalony. Aby zniwelować ten efekt, zmieniono postać wska\'znika jakości wykorzystywanego w funkcji optymalizującej na :
 \begin{equation}\label{key}
 J = J_3 + 10 \cdot |z - \alpha_k|
 \end{equation}
@@ -146,6 +147,8 @@ $
 \FloatBarrier
 \newpage
 \section{Porównanie wska\'zników jakości}
+Poniżej zamieszono porównanie wska\'zników jakości dla trzech różnych regulatorów oraz wartości wspomnianych wska\'zników po przeprowadzonej optymalizacji.
+
 \begin{table}[h]
 	\caption{Porównanie wska\'zników jakości regulator PID - neuronowy + saturacja - neuronowy + f. sigmoidalna.}
 	\label{por_reg_pid_n_n}
@@ -153,7 +156,7 @@ $
 	
 	\begin{tabular}{|c|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
 		\hline
-		Regulator &$J_1$&$J_2$&$J_3$\\
+		\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Regulator \textbackslash\\ Wska\'znik jakości\end{tabular}} &$J_1$&$J_2$&$J_3$\\
 		\hline
 		PID &3.739&   0.841 &  4.580\\
 		\hline
@@ -173,12 +176,12 @@ $
 
 \section{Projektowanie regulatora neuronowego z użyciem Neural Toolbox.}
 	
-Zadanie polegało na zbadaniu jaka struktura regulatora neuronowego najlepiej odwzoruje pracę układu z regulatorem PID. Na podstawie sygnału sterującego wygenerowanego przez zaprojektowany we wcześniejszej części regulator PID badano która z rozpatrywanych struktur regulatora jest najlepsza pod względem minimalizacji całki z różnicy pomiędzy sterowaniem referencyjnym i sygnałem pochodzącym z otrzymanego regulatora. Do przeprowadzenia tej części ćwiczenia wykorzystano przybornik Neural Network ze środowiska MATLAB. \\
+Zadanie polegało na zbadaniu jaka struktura regulatora neuronowego najlepiej odwzoruje pracę układu z regulatorem PID. Na podstawie sygnału sterującego, wygenerowanego przez zaprojektowany we wcześniejszej części regulator PID, badano, która z rozpatrywanych struktur regulatora jest najlepsza pod względem minimalizacji całki z różnicy pomiędzy sterowaniem referencyjnym i sygnałem pochodzącym z otrzymanego regulatora. Do przeprowadzenia tej części ćwiczenia wykorzystano przybornik Neural Network ze środowiska MATLAB. \\
 
-Rozpatrywano różne postaci sygnałów wejściowych 
+Rozpatrywano różne postaci sygnałów wejściowych:
 \begin{enumerate}
 	\item trzy ostatnie wartości uchybu regulacji,
-	\item trzy ostatnie wartości uchybu regulacji plus ostatnia wartość referencyjnego sygnału sterującego
+	\item trzy ostatnie wartości uchybu regulacji plus ostatnia wartość referencyjnego sygnału sterującego.
 \end{enumerate} 	
 Dodatkowo sprawdzono jak liczba neuronów wpływa na wyniki eksperymentu. Rozpatrywano odpowiednio 10 i 20 neuronów w strukturze regulatora.\\
 \\
@@ -191,7 +194,7 @@ Otrzymane wyniki przedstawione są w tabeli \ref{optNeural}
 		
 		\begin{tabular}{|c|M{2.5cm}|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
 			\hline
-			wska\'znik jakości&10 neuronów&20 neuronów&10 neuronów + sterowanie&20 neuronów + sterowanie\\
+			Wska\'znik jakości&10 neuronów&20 neuronów&10 neuronów + sterowanie&20 neuronów + sterowanie\\
 			\hline
 			e $[V^2 \cdot s]$&11.7862 &   1.5767 &   0.1073& $1.391 \cdot 10^{-5}$ \\
 			\hline
@@ -203,7 +206,7 @@ Otrzymane wyniki przedstawione są w tabeli \ref{optNeural}
 		\centering
 		\includegraphics[scale = 0.8]{fig/10neuron.eps}
 		\caption		
-		{Porównanie sterowanie referencyjnego z wyjściem regulatora neuronowego l. neuronów = 10.}
+		{Porównanie sterowania referencyjnego z wyjściem regulatora neuronowego, liczba neuronów = 10.}
 		\label{10n}
 	\end{figure}
 
@@ -211,7 +214,7 @@ Otrzymane wyniki przedstawione są w tabeli \ref{optNeural}
 	\centering
 	\includegraphics[scale = 0.8]{fig/20neuronU.eps}
 	\caption		
-	{Porównanie sterowanie referencyjnego z wyjściem regulatora neuronowego l. neuronów = 20, + sterowanie.}
+	{Porównanie sterowania referencyjnego z wyjściem regulatora neuronowego liczba neuronów = 2.}
 	\label{20nU}
 \end{figure}
 

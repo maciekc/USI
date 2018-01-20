@@ -27,10 +27,10 @@ U(t) = i(t) \cdot R + \frac{d i(t)}{dt} \cdot L
 gdzie:\\
 $\alpha$ - kąt wychylenia,\\
 $J$ - moment bezwładności ramienia,\\
-$U(t)$ - napięcie podawane na silnik,\\
+$U(t)$ - napięcie podawane na silnik.\\
 
-W przyjętym modelu obiektu założono że wielkością sterującą jest napięcie podawane na silnik, a wyjściową kąt wychylenia ramienia.\\
-Na podstawie równań \ref{r1} i \ref{r2} zapisano model matematyczny w postać równań stanu przyjmując następujące zmienne stanu:\\
+W przyjętym modelu obiektu założono, że wielkością sterującą jest napięcie podawane na silnik, a wyjściową kąt wychylenia ramienia.\\
+Na podstawie równań \ref{r1} i \ref{r2} zapisano model matematyczny w postaci równań stanu, przyjmując następujące zmienne stanu:\\
 $x_1$ - prąd silnika\\
 $x_2$ -  położenie kątowe ramienia\\
 $x_3$ - prędkość kątowa ramienia\\
@@ -44,7 +44,7 @@ $x_3$ - prędkość kątowa ramienia\\
 \dot {x_3} = \frac{k_e}{J} \cdot x_1
 \end{equation}
 
-Schemat blokowy programu \textit{Simulink} realizujący opisany powyższy model został przedstawiony na rysunku 
+Schemat blokowy realizujący powyższe równania stowrzono z wykorzystaniem programu \textit{Simulink} oraz przedstawiono na rysunku \ref{fig:model}. 
 
 \begin{figure}[h]
 	\centering
@@ -53,25 +53,25 @@ Schemat blokowy programu \textit{Simulink} realizujący opisany powyższy model 
 	\label{fig:model}
 \end{figure}
 
-Na rysunkach  przedstawiono odpowiedzi zmiennych stanu na skok napięcia.
+Na rysunkach \ref{fig:step1} - \ref{fig:step3} przedstawiono odpowiedzi poszczególnych zmiennych stanu na skok napięcia.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=4in]{Figures/step_curr.eps}
 	\caption{Odpowiedź prądu na skok napięcia.}
-	\label{fig:step}
+	\label{fig:step1}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=4in]{Figures/step_ang.eps}
 	\caption{Odpowiedź kąta na skok napięcia.}
-	\label{fig:step}
+	\label{fig:step2}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=4in]{Figures/step_vel.eps}
 	\caption{Odpowiedź prędkości kątowej na skok napięcia.}
-	\label{fig:step}
+	\label{fig:step3}
 \end{figure}

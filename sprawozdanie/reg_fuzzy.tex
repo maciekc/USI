@@ -1,7 +1,7 @@
 \chapter{Regulator rozmyty}
 
-W tej sekcji przedstawione zostaną wyniki symulacji działania przyjętego układu z regulatorem rozmytym Mamdaniego. Cały proces projektowania struktury regulatora został przeprowadzony w toolbox-ie \textit{Fuzzy} środowiska MATLAB. Głównym celem przeprowadzonych badań było zapoznanie się z zasadą działania regulatora rozmytego i  jak najlepsze odwzorowanie działania oryginalnego regulatora PD. \\
-Zdecydowano, że sygnałami wejściowymi, na których bazował regulator będą uchyb i pochodna uchybu regulacji. Na bazie przebiegów wcześniej wspomnianych sygnałów została zaprojektowana baza reguł. Ze względu na różną dynamikę układu, zależną od wypełnienia szklanki, wprowadzono różne reguły dla sterowania. Wszystkie reguły w zależności od wartość uchybu regulacji i jego pochodnej podane są w tabeli \ref{fuzzy_table}. Symbole $P$ i $ P_p$ oznaczają odpowiednio regułę "dodatnią" dla pełnej i pustej szklanki.\\
+W tej sekcji przedstawiono wyniki symulacji działania przyjętego układu z regulatorem rozmytym Mamdaniego. Cały proces projektowania struktury regulatora został przeprowadzony w toolbox-ie \textit{Fuzzy} środowiska MATLAB. Głównym celem przeprowadzonych badań było zapoznanie się z zasadą działania regulatora rozmytego i  jak najlepsze odwzorowanie działania oryginalnego regulatora PID. \\
+Zdecydowano, że sygnałami wejściowymi, na których bazował regulator będą uchyb i pochodna uchybu regulacji. Na bazie przebiegów wcześniej wspomnianych sygnałów została zaprojektowana baza reguł. Ze względu na różną dynamikę układu, która zależała od poziomu wypełnienia szklanki, wprowadzono różne reguły dla sterowania. Wszystkie reguły w zależności od wartość uchybu regulacji i jego pochodnej podane są w tabeli \ref{fuzzy_table}. Symbole $P$ i $ P_p$ oznaczają odpowiednio regułę "dodatnią" dla pełnej i pustej szklanki.\\
 W ramach przeprowadzonych badań symulacyjnych porównano działania regulatora na bazie wcześniej przyjętych wska\'zników jakości dla różnych postaci funkcji przynależności.
 
 \begin{table}[h]
@@ -188,7 +188,7 @@ Na rysunku \ref{fuzzy_sageno_sufraceMan} zaprezentowano powierzchnię sterowania
 \newpage
 
 \subsection{Optymalizacja struktury regulatora}
-W kolejnym kroku wykorzystano funkcje środowiska Matlab \textit{genfis1} i \textit{anfis} do wyznaczenia struktury regulatora. W procesie konfiguracji ustawiono gaussowskie funkcje przynależności zarówno dla uchybu regulacji jak i dla jego pochodnej. Na rysunkach \ref{fuzzy_sageno_sufrace} - \ref{fuzzy_sageno_e_rulles} zaprezentowano płaszczyznę sterowania oraz funkcje przynależności zwrócone przez wcześniej wymienione funkcje.
+W kolejnym kroku wykorzystano funkcję środowiska Matlab \textit{genfis1} i \textit{anfis} do wyznaczenia struktury regulatora. W procesie konfiguracji ustawiono gaussowskie funkcje przynależności zarówno dla uchybu regulacji jak i dla jego pochodnej. Na rysunkach \ref{fuzzy_sageno_sufrace} - \ref{fuzzy_sageno_de_rulles} zaprezentowano płaszczyznę sterowania oraz funkcje przynależności zwrócone przez wcześniej wymienione funkcje.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale = 0.8]{fig/sagenoOptSurface.eps}
@@ -230,12 +230,12 @@ Rysunek \ref{fuzzy_sageno_odp} przedstawia przebiegi wszystkich zmiennych stanu 
 \newpage
 \subsection{Porównanie}
 
-Porównując wartości w tabeli \ref{fuzzy_sageno_wsk} i przebiegi na rysunku \ref{fuzzy_sageno_por} można stwierdzić, że odpowied\'z obiektu dla regulatora otrzymanego w wyniku przeprowadzenia procedury optymalizującej ma gorszą dynamikę niż w przypadku ręcznego strojenie. W zamian za to otrzymaliśmy znacząco lepszą wartość wska\'znika $J_2$ oraz mniejsze przeregulowanie.
+Porównując wartości w tabeli \ref{fuzzy_sageno_wsk} i przebiegi na rysunku \ref{fuzzy_sageno_por} można stwierdzić, że odpowied\'z obiektu dla regulatora otrzymanego w wyniku przeprowadzenia procedury optymalizującej ma gorszą dynamikę niż w przypadku ręcznego strojenia. W zamian za to otrzymaliśmy znacząco lepszą wartość wska\'znika $J_2$ jakości oraz mniejsze przeregulowanie.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale = 0.8]{fig/por_fuzzy_sageno.eps}
 	\caption		
-	{Porównanie działania regulatora przed i po optymalizacji.}
+	{Porównanie działania regulatora przed i po procesie optymalizacji.}
 	\label{fuzzy_sageno_por}
 \end{figure}
 

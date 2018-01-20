@@ -36,7 +36,7 @@ Równania stanu sporządzone na podstawie równań \ref{eq:model_vertical1} maj�
 Proces identyfikacji parametrów równań \ref{eq:ss_vertical1} opisany jest w pracy \cite{LP}.
 
 \section{Regulator referencyjny}
-Aby dobrać strukturę regulatora rozmytego typu Sageno zdecydowano wykorzystać regulator LQI. Podejście to wymagało zlinearyzowania równań \ref{eq:ss_vertical1} oraz zaprojektowania obserwatora Luengergera (\cite{LP}) w celu estymacji pełnego stanu obiektu.\\ 
+Aby dobrać strukturę regulatora rozmytego typu Sageno podjęto decyzję o wykorzystaniu regulatora LQI. Podejście to wymagało zlinearyzowania równań \ref{eq:ss_vertical1} oraz zaprojektowania obserwatora Luengergera (\cite{LP}) w celu estymacji pełnego stanu obiektu.\\ 
 Zlinearyzowany model w położeniu poziomym opisany jest równaniem 
 \begin{equation}\label{key}
 \begin{aligned}
@@ -120,7 +120,7 @@ K=\begin{bmatrix}
 \end{equation}
 
 \section{Regulator rozmyty}
-Do doboru struktury regulatora rozmytego typu Sageno wykorzystano funkcję\textit{genfis} środowiska \textit{Matlab}. W pierwszym etapie sprawdzono jakość regulacji projektując regulator \textit{fuzzy} na bazie modelu matematycznego. Na rysunku  \ref{por_model_lqi_fuzzy} przedstawiono odpowied\'zi modelu obiektu w przypadku działania regulatora LQI i fuzzy.\\
+Do doboru struktury regulatora rozmytego typu Sageno wykorzystano funkcję\textit{genfis} środowiska \textit{Matlab}. W pierwszym etapie sprawdzono jakość regulacji projektując regulator \textit{fuzzy} na bazie modelu matematycznego. Na rysunku  \ref{por_model_lqi_fuzzy} przedstawiono odpowiedzi modelu obiektu w przypadku działania regulatora LQI i fuzzy.\\
 %
 \begin{table}[h]
 	\caption{Porównanie wska\'zników jakości regulator LQI i fuzzy dla modelu.}
@@ -179,7 +179,8 @@ Wartości wska\'zników jakości zaprezentowane w tabeli \ref{por_reg_lqi_fuzz_m
 \FloatBarrier
 Następnie postanowiono sprawdzić działanie regulatora na rzeczywistym obiekcie. W tym celu na wejście obiektu podano sygnał pokazany na rysunku \ref{stan_obiekt}. Podczas działania układu rejestrowano wartości zmiennych stanu (wyjście z obserwatora Luenbergera), całki uchybu regulacji oraz sterowania.\\
 Zdecydowano, że do procedury \textit{genfis} podane zostaną przebiegi zarejestrowanych zmiennych pomiędzy 20 a 40 sekundą. Decyzja ta wynikała z chęci uniknięcia optymalizacji struktury regulatora na danych z początkowego etapu działania obserwatora gdy estymowane wartości zmiennych stanu znacznie odbiegały od rzeczywistych. \\
- \begin{figure}[h!]
+Niestety nie udało się przetestować działania tak zaprojektowanego regulatora na obiekcie ponieważ \textit{Simulink} nie potrafił uruchomić modelu w czasie rzeczywistym gdy był wykorzystywany w nim bloczek  \textit{Fuzzy Logic Controller}. \\
+ \begin{figure}[h]
 	\noindent\makebox[\textwidth]{
 		\centering
 		\subfloat[][Przebieg zmiennych stanu.]{
@@ -199,17 +200,14 @@ Zdecydowano, że do procedury \textit{genfis} podane zostaną przebiegi zarejest
 	\caption{Dane wykorzystane do optymalizacji struktury reg. rozmytego.}		
 \end{figure}
 %
-%
-\begin{figure}[h!]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale = 0.8]{fig/fuzzy_obiekt_surf.eps}
 	\caption		
 	{Powierzchnia sterowania dla obiektu rzutowana na pierwszą i drugą zmienną stanu.}
 	\label{fuzzy_hel_obiekt_surf}
 \end{figure} 
-Niestety nie udało się przetestować działania tak zaprojektowanego regulatora na obiekcie ponieważ \textit{Simulink} nie potrafił uruchomić modelu w czasie rzeczywistym gdy był wykorzystywany w nim bloczek  \textit{Fuzzy Logic Controller}. \\
-%
-\begin{figure}[h!]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale = 0.8]{fig/bladSim.PNG}
 	\caption		
@@ -217,5 +215,5 @@ Niestety nie udało się przetestować działania tak zaprojektowanego regulator
 	\label{bladSim}
 \end{figure} 
 \FloatBarrier
- Na podstawie powierzchni sterowania zaprezentowanej na rysunku \ref{fuzzy_hel_obiekt_surf} można stwierdzić że struktura regulatora jest podobna do uzyskanej na podstawie danych symulacyjnych rysunek \ref{fuzzy_hel_model_surf}. 
+ Na podstawie powierzchni sterowania zaprezentowanej na rysunku \ref{fuzzy_hel_obiekt_surf} można stwierdzić że struktura regulatora jest podobna do struktury uzyskanej na podstawie danych symulacyjnych (rysunek \ref{fuzzy_hel_model_surf}). 
  
