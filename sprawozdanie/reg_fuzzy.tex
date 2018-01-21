@@ -1,6 +1,6 @@
 \chapter{Regulator rozmyty}
 
-W tej sekcji przedstawiono wyniki symulacji działania przyjętego układu z regulatorem rozmytym Mamdaniego. Cały proces projektowania struktury regulatora został przeprowadzony w toolbox-ie \textit{Fuzzy} środowiska MATLAB. Głównym celem przeprowadzonych badań było zapoznanie się z zasadą działania regulatora rozmytego i  jak najlepsze odwzorowanie działania oryginalnego regulatora PID. \\
+W tej sekcji przedstawiono wyniki symulacji działania przyjętego układu z regulatorem rozmytym Mamdaniego. Cały proces projektowania struktury regulatora został przeprowadzony w toolbox-ie \textit{Fuzzy} środowiska \textit{Matlab}. Głównym celem przeprowadzonych badań było zapoznanie się z zasadą działania regulatora rozmytego i  jak najlepsze odwzorowanie działania oryginalnego regulatora PID. \\
 Zdecydowano, że sygnałami wejściowymi, na których bazował regulator będą uchyb i pochodna uchybu regulacji. Na bazie przebiegów wcześniej wspomnianych sygnałów została zaprojektowana baza reguł. Ze względu na różną dynamikę układu, która zależała od poziomu wypełnienia szklanki, wprowadzono różne reguły dla sterowania. Wszystkie reguły w zależności od wartość uchybu regulacji i jego pochodnej podane są w tabeli \ref{fuzzy_table}. Symbole $P$ i $ P_p$ oznaczają odpowiednio regułę "dodatnią" dla pełnej i pustej szklanki.\\
 W ramach przeprowadzonych badań symulacyjnych porównano działania regulatora na bazie wcześniej przyjętych wska\'zników jakości dla różnych postaci funkcji przynależności.
 
@@ -143,7 +143,7 @@ Z przebiegów zamieszczonych na rysunku \ref{fuzzy_por} i danych z tabeli \ref{f
 
 \newpage
 \section{Regulator Takagi - Sageno}
-Główną różnicą pomiędzy regulatorem rozmytym typu Takagi-Sageno (1985 r.), a strukturą regulatora zaproponowaną przez Mamdaniego jest liniowa funkcja wyjścia.  
+Główną różnicą pomiędzy regulatorem rozmytym typu Takagi-Sageno (1985 r.), a strukturą regulatora zaproponowaną przez Mamdaniego jest sposób wyznaczania wartości sygnału wyjściowego. W przypadku regulatora Mamdaniego po przeprowadzeniu fuzyfikacji sygnałów wejściowych następował etap wnioskowania dla każdej z reguł oraz agregacji otrzymanych wartości. Następnie otrzymany zbiór rozmyty był poddawany procesowi defuzyfikacji wykorzystując do tego celu metodę środka ciężkości. W przypadku regulatora Takag-Sageno proces wyliczania sygnału wyjściowego jest mniej skomplikowany. Wyjściowe funkcje przynależności są w tym przypadku stałymi lub funkcjami liniowymi sygnałów wejściowych, a wartość wyjściowa wyliczana jest jako średnia ważona tych wartości.
 
 \subsection{Manualny dobór struktury regulatora}
 W rozpatrywanym przypadku reguły przynależności do zbiorów rozmytych dla sygnału wejściowego są identyczne jak te opisane w podrozdziale \ref{mamdani2}. Wielkościami poszukiwanymi w tym przypadku były wartości funkcji wyjściowej dla każdego z rozpatrywanych przypadków. Przyjęto, że będzie ona przyjmować wartości ze zbioru ${-1, 0, 1}$. W tabeli \ref{sagenoRulesTab} zamieszczone są wszystkie reguły zaprojektowanego regulatora.
@@ -188,7 +188,7 @@ Na rysunku \ref{fuzzy_sageno_sufraceMan} zaprezentowano powierzchnię sterowania
 \newpage
 
 \subsection{Optymalizacja struktury regulatora}
-W kolejnym kroku wykorzystano funkcję środowiska Matlab \textit{genfis1} i \textit{anfis} do wyznaczenia struktury regulatora. W procesie konfiguracji ustawiono gaussowskie funkcje przynależności zarówno dla uchybu regulacji jak i dla jego pochodnej. Na rysunkach \ref{fuzzy_sageno_sufrace} - \ref{fuzzy_sageno_de_rulles} zaprezentowano płaszczyznę sterowania oraz funkcje przynależności zwrócone przez wcześniej wymienione funkcje.
+W kolejnym kroku wykorzystano funkcję środowiska \textit{Matlab} \textit{genfis1} i \textit{anfis} do wyznaczenia struktury regulatora. W procesie konfiguracji ustawiono gaussowskie funkcje przynależności zarówno dla uchybu regulacji jak i dla jego pochodnej. Na rysunkach \ref{fuzzy_sageno_sufrace} - \ref{fuzzy_sageno_de_rulles} zaprezentowano płaszczyznę sterowania oraz funkcje przynależności zwrócone przez wcześniej wymienione funkcje.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale = 0.8]{fig/sagenoOptSurface.eps}
