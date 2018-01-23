@@ -31,14 +31,14 @@ Uwzględniając fakt, iż przy przemieszczaniu pustej lub pełnej szklanki nale�
 f(u,z) = f_{sat1} ((1-z) \cdot u_1 + z \cdot u_2) \cdot (1-z) + f_{sat2} ((1-z) \cdot u_1 + z \cdot u_2) \cdot z
 \end{equation}
 gdzie: \\
-$z - $przeskalowania wartość zadana do przedziału [0,1]\\
+$z - $przeskalowania wartość zadana do przedziału [0,1],\\
 $u_1, \ u_2 - $wartości sterowania odpowiednio od regulatorów dla pełnej i pustej szklanki,\\
 $f_{sat1}, \ f_{sat2}$ - funkcje saturacji dla pełnej i pustej szklanki.
  \\
 \newpage
  Przeanalizowano dwie postaci funkcji saturacji: 
  \begin{enumerate}
- 	\item klasyczna funkcja opisana równaniem :
+ 	\item klasyczna funkcja opisana równaniem:
  	\begin{equation}\label{sat_klas}
  	f_{sat}(x) = 
  	\begin{cases}
@@ -111,7 +111,7 @@ $
 	\label{neuron_ster_opt}
 \end{figure}
 \\
-Uwzględniając fakt, że w omawianym układzie saturację zastąpiono funkcją sigmoidalną, w wyniku działania regulatora otrzymano uchyb ustalony. Aby zniwelować ten efekt, zmieniono postać wska\'znika jakości wykorzystywanego w funkcji optymalizującej na :
+W omawianym układzie saturację zastąpiono funkcją sigmoidalną. W wyniku działania regulatora otrzymano uchyb ustalony. Aby zniwelować ten efekt, zmieniono postać wska\'znika jakości wykorzystywanego w funkcji optymalizującej na:
 \begin{equation}\label{key}
 J = J_3 + 10 \cdot |z - \alpha_k|
 \end{equation}
@@ -176,7 +176,7 @@ Poniżej zamieszono porównanie wska\'zników jakości dla trzech różnych regu
 
 \section{Projektowanie regulatora neuronowego z użyciem Neural Toolbox.}
 	
-Zadanie polegało na zbadaniu jaka struktura regulatora neuronowego najlepiej odwzoruje pracę układu z regulatorem PID. Na podstawie sygnału sterującego, wygenerowanego przez zaprojektowany we wcześniejszej części regulator PID, badano, która z rozpatrywanych struktur regulatora jest najlepsza pod względem minimalizacji całki z różnicy pomiędzy sterowaniem referencyjnym i sygnałem pochodzącym z otrzymanego regulatora. Do przeprowadzenia tej części ćwiczenia wykorzystano przybornik Neural Network ze środowiska MATLAB. \\
+Zadanie polegało na zbadaniu jaka struktura regulatora neuronowego najlepiej odwzoruje pracę regulatora PID dla badanego układu. Na podstawie sygnału sterującego, wygenerowanego przez zaprojektowany we wcześniejszej części regulator PID, badano, która z rozpatrywanych struktur regulatora jest najlepsza pod względem minimalizacji całki z różnicy pomiędzy sterowaniem referencyjnym i sygnałem pochodzącym z otrzymanego regulatora. Do przeprowadzenia tej części ćwiczenia wykorzystano przybornik Neural Network ze środowiska MATLAB. \\
 
 Rozpatrywano różne postaci sygnałów wejściowych:
 \begin{enumerate}
@@ -214,7 +214,7 @@ Otrzymane wyniki przedstawione są w tabeli \ref{optNeural}
 	\centering
 	\includegraphics[scale = 0.8]{fig/20neuronU.eps}
 	\caption		
-	{Porównanie sterowania referencyjnego z wyjściem regulatora neuronowego liczba neuronów = 2.}
+	{Porównanie sterowania referencyjnego z wyjściem regulatora neuronowego liczba neuronów = 20.}
 	\label{20nU}
 \end{figure}
 
